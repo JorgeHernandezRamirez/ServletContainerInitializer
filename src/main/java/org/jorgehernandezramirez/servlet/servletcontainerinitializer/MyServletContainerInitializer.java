@@ -20,13 +20,13 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
     }
 
     @Override
-    public void onStartup(final Set<Class<?>> set, final ServletContext servletContext) throws ServletException {
-        callImplementationHandlerType(set, servletContext);
+    public void onStartup(final Set<Class<?>> handlerTypeSet, final ServletContext servletContext) throws ServletException {
+        callImplementationHandlerType(handlerTypeSet, servletContext);
     }
 
-    private void callImplementationHandlerType(final Set<Class<?>> set, final ServletContext servletContext){
-        if(set != null){
-            set.forEach(aClass -> {
+    private void callImplementationHandlerType(final Set<Class<?>> handlerTypeSet, final ServletContext servletContext){
+        if(handlerTypeSet != null){
+            handlerTypeSet.forEach(aClass -> {
                 executeImplementationIHandlerTypeInstance(aClass, servletContext);
             });
         }
