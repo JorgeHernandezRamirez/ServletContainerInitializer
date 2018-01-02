@@ -15,7 +15,9 @@ public class ErrorPageHttpServletResponseWrapper extends HttpServletResponseWrap
 
     @Override
     public void sendError(int sc) throws IOException {
-        ((HttpServletResponse)getResponse()).sendRedirect(ERROR_PAGE);
+        if(sc == 404) {
+            ((HttpServletResponse) getResponse()).sendRedirect(ERROR_PAGE);
+        }
     }
 
     @Override
